@@ -1,4 +1,4 @@
-<div *ngIf="currentCharacter">
+<div>
   <h3>{{childCurrentCharacter.name}}</h3>
   <h4>Class: {{childCurrentCharacter.charClass}}</h4>
   <ul>
@@ -9,7 +9,7 @@
     <li>Dexterity: {{childCurrentCharacter.dexterity}}</li>
   </ul>
   <ul>
-    <li *ngFor="let currentItem of childCurrentCharacter.items">
+    <li *ngFor="let currentItem of currentCharacter.items">
       <h4>{{currentItem.name}}</h4>
       <button type="button" (click)="childCurrentCharacter.useItem(currentItem)">Use Item</button>
     </li>

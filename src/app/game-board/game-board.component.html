@@ -1,3 +1,6 @@
-<p>
-  game-board works!
-</p>
+<div>
+  <div style="position: relative">
+    <div *ngFor="let square in myGameBoard.board; let i = index" [ngStyle]="renderSquare(i)">
+    </div>
+  </div>
+</div>

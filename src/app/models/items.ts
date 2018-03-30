@@ -1,5 +1,5 @@
 export class Item {
-  constructor(public name: string, public imgPath: string, attribute, magnitude){
+  constructor(public name: string, attribute, magnitude){
     this.useItem = (()=>{
       return function(consumer){
         consumer[attribute]+=magnitude;
