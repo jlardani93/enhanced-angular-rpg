@@ -1,6 +1,6 @@
 import { Item } from './items';
 import { Monster } from './monsters';
-import { Ability } from './abilities';
+import { abilitiesLibrary } from './abilities';
 
 export class Character {
   constructor(public name: string, public characterClass: string, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, attackAttribute, ...abilities){
@@ -9,7 +9,7 @@ export class Character {
     this.attack = (()=>{
       return function(monster: Monster){
         monster.health -= this[attackAttribute];
-        return `${this.name} attacked ${monster.monsterType} for ${this[attackAttribute]} health.`
+        return `${this.name} attacked ${monster.name} for ${this[attackAttribute]} health.`
       }
     })();
   }
@@ -19,7 +19,8 @@ export class Character {
   experienceToNext: number = 100;
   health: number;
   mana: number;
-  items: Item[];
+  items: Item[] = [];
+  abilities: object[] = []
 
   attack;
 }

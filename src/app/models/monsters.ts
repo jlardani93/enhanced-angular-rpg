@@ -1,6 +1,6 @@
 import { Character } from './characters';
 import { Item } from './items';
-import { Ability } from './abilities';
+import { abilitiesLibrary } from './abilities';
 
 
 export class Monster {
@@ -20,8 +20,8 @@ export class Monster {
   experienceToNext: number = 100;
   health: number;
   mana: number;
-  items: Item[];
-  abilities: Ability[];
+  items: Item[] = [];
+  abilities: object[] = [];
 
   attack;
 }
@@ -32,16 +32,16 @@ export let monsterFactory = {
   },
 
   classLibrary: {
-    mage: function(){
+    creep: function(){
       return new Monster('Creep', 50, 100, 4, 3, 10, 6, 5, 'strength',  );
     },
-    warrior: function(){
+    zombie: function(){
       return new Monster('Zombie', 100, 50, 8, 10, 2, 6, 5, 'strength', );
     },
-    rogue: function(){
+    skeleton: function(){
       return new Monster('Skeleton', 75, 75, 4, 6, 6, 10, 5, 'dexterity', );
     },
-    archer: function(){
+    ghoul: function(){
       return new Monster('Ghoul', 75, 75, 4, 6, 6, 10, 5, 'dexterity', );
     }
   }

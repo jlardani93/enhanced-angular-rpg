@@ -1,32 +1,16 @@
-export class Character {
-  constructor(public name: string, public characterClass: string, public experience: number, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, attackString: string, ...abilities){
-    this.health = this.maxHealth;
-    this.mana = this.maxMana;
-    this.attack = (()=>{
-      return function(monster: Monster, attackAttribute){
-        monster.health -= this[attackAttribute];
-        return `${this.name} attacked ${monster.name} for ${this.attackAttribute} health.`
+export class Item {
+  constructor(public name: string, attribute, magnitude){
+    this.useItem = (()=>{
+      return function(consumer){
+        consumer[attribute]+=magnitude;
+        return `${this.name} was used by ${consumer.name} to increase ${attribute} by ${magnitude}`
       }
     })();
   }
-
-  level: number = 1;
-  experienceToNext: number = 100;
-  health: number;
-  mana: number;
-  items: Item[];
-
-  attack;
+  useItem;
 }
 
-export let characterFactory = {
-  createCharacter: function(name: string, characterClass: string){
-    return this.classLibrary[characterClass](name);
-  },
-
-  classLibrary: {
-    mage: function(name: string){
-      return new Character(name, 'Mage', )
-    }
-  }
+export let itemsLibrary = {
+  healthPotion: new Item('Health Potion', 'Health', 30),
+  manaPotion: new Item('Mana Potion', 'Mana', 50)
 }
