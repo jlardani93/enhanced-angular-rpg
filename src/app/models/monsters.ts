@@ -4,7 +4,7 @@ import { abilitiesLibrary } from './abilities';
 
 
 export class Monster {
-  constructor(public name: string, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, attackAttribute, ...abilities){
+  constructor(public name: string, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, public imgPath: string, attackAttribute, ...abilities){
     this.health = this.maxHealth;
     this.mana = this.maxMana;
     this.attack = (()=>{
