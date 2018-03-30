@@ -4,7 +4,7 @@ import { abilitiesLibrary } from './abilities';
 
 
 export class Monster {
-  constructor(public name: string, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, attackAttribute, ...abilities){
+  constructor(public name: string, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, attackAttribute, public imgPath: string, ...abilities){
     this.health = this.maxHealth;
     this.mana = this.maxMana;
     this.attack = (()=>{
@@ -32,17 +32,17 @@ export let monsterFactory = {
   },
 
   classLibrary: {
-    creep: function(){
-      return new Monster('Creep', 50, 100, 4, 3, 10, 6, 5, 'strength',  );
+    bat: function(){
+      return new Monster('Bat', 50, 100, 4, 3, 10, 6, 5, 'strength', '-400px -900px'  );
     },
     zombie: function(){
-      return new Monster('Zombie', 100, 50, 8, 10, 2, 6, 5, 'strength', );
+      return new Monster('Zombie', 100, 50, 8, 10, 2, 6, 5, 'strength', '-400px -1000px' );
     },
     skeleton: function(){
-      return new Monster('Skeleton', 75, 75, 4, 6, 6, 10, 5, 'dexterity', );
+      return new Monster('Skeleton', 75, 75, 4, 6, 6, 10, 5, 'dexterity', "-100px -900px" );
     },
     ghoul: function(){
-      return new Monster('Ghoul', 75, 75, 4, 6, 6, 10, 5, 'dexterity', );
+      return new Monster('Ghoul', 75, 75, 4, 6, 6, 10, 5, 'dexterity', '-500px -900px' );
     }
   }
 }

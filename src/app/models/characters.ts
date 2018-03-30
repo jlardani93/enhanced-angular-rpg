@@ -36,16 +36,16 @@ export let characterFactory = {
 
   classLibrary: {
     mage: function(name: string){
-      return new Character(name, 'Mage', 50, 100, 4, 3, 10, 6, 5, 'strength', './assets/img/spritesheet.png', 'magicMissle', 'heal', 'fireball');
+      return new Character(name, 'Mage', 50, 100, 4, 3, 10, 6, 5, 'strength', '-900px -1400px', 'magicMissle', 'heal', 'fireball');
     },
     warrior: function(name: string){
-      return new Character(name, 'Warrior', 100, 50, 8, 10, 2, 6, 5, 'strength', './assets/img/spritesheet.png', 'heal', 'doubleAttack' );
+      return new Character(name, 'Warrior', 100, 50, 8, 10, 2, 6, 5, 'strength', '-800px -1500px', 'heal', 'doubleAttack' );
     },
     rogue: function(name: string){
-      return new Character(name, 'Rogue', 75, 75, 4, 6, 6, 10, 5, 'dexterity', './assets/img/spritesheet.png', 'heal', 'throwingKnife');
+      return new Character(name, 'Rogue', 75, 75, 4, 6, 6, 10, 5, 'dexterity', '-1000px -1500px', 'heal', 'throwingKnife');
     },
     archer: function(name: string){
-      return new Character(name, 'Archer', 75, 75, 4, 6, 6, 10, 5, 'dexterity', './assets/img/spritesheet.png', 'heal', 'magicArrow' );
+      return new Character(name, 'Archer', 75, 75, 4, 6, 6, 10, 5, 'dexterity', '-1100px -1500px', 'heal', 'magicArrow' );
     }
   }
 }
