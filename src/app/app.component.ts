@@ -31,9 +31,9 @@ export class AppComponent {
     if (event.key === "ArrowRight" && this.currentCharacter.x !== gameBoard.width-1 && (resetBool = true)) this.currentCharacter.x+=1;
     if (event.key === "ArrowUp" && this.currentCharacter.y !== 2 && (resetBool = true)) this.currentCharacter.y-=1;
     if (event.key === "ArrowDown" && this.currentCharacter.y !== gameBoard.height-1 && (resetBool = true)) this.currentCharacter.y+=1;
-    if (resetBool) tempSquare.player = false; 
+    if (resetBool) tempSquare.player = false;
     gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
-    console.log("currentCharacterY: " + this.currentCharacter.y + " currentCharacterX" + this.currentCharacter.x);
-    console.log(resetBool);
+    if (gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].monster) this.isFighting = true;
+    console.log(this.isFighting); 
   }
 }

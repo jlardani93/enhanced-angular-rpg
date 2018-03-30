@@ -1,3 +1,5 @@
+import { Monster, monsterFactory } from './monsters';
+
 export let gameBoard = {
   board: [],
   board2d: [],
@@ -19,6 +21,19 @@ export let gameBoard = {
         this.board2d[j].push(this.board[index]);
         index++;
       }
+    }
+    this.addMonster(2);
+  },
+
+  addMonster: function(amount: number){
+    for (let i = 1; i <= amount; i++){
+      let randomIndex = Math.floor(Math.random()*this.board.length);
+      if (randomIndex <= this.width*2){
+        this.addMonster(1);
+        break;
+      }
+      this.board[randomIndex].monster = monsterFactory.createMonster('skeleton');
+      console.log(this.board[randomIndex].monster);
     }
   }
 }

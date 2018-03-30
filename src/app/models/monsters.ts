@@ -31,7 +31,7 @@ export let monsterFactory = {
     return this.monsterLibrary[name]();
   },
 
-  classLibrary: {
+  monsterLibrary: {
     bat: function(){
       return new Monster('Bat', 50, 100, 4, 3, 10, 6, 5, 'strength', '-400px -900px'  );
     },
