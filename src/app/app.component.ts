@@ -20,6 +20,6 @@ export class AppComponent {
 
   setIsPlaying = function(){
     this.isPlaying = true;
-    gameBoard.generateGameBoard; 
+    gameBoard.generateGameBoard(); 
   }
 }

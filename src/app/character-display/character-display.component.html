@@ -1,15 +1,16 @@
 <div>
   <h3>{{childCurrentCharacter.name}}</h3>
-  <h4>Class: {{childCurrentCharacter.charClass}}</h4>
+  <h4>Class: {{childCurrentCharacter.characterClass}}</h4>
   <ul>
     <li>Current Health: {{childCurrentCharacter.health}} / {{childCurrentCharacter.maxHealth}}</li>
     <li>Strength: {{childCurrentCharacter.strength}}</li>
     <li>Defense: {{childCurrentCharacter.defense}}</li>
     <li>Intelligence: {{childCurrentCharacter.intelligence}}</li>
     <li>Dexterity: {{childCurrentCharacter.dexterity}}</li>
+    <img src="assets/img/spritesheet.png">
   </ul>
   <ul>
-    <li *ngFor="let currentItem of currentCharacter.items">
+    <li *ngFor="let currentItem of childCurrentCharacter.items">
       <h4>{{currentItem.name}}</h4>
       <button type="button" (click)="childCurrentCharacter.useItem(currentItem)">Use Item</button>
     </li>

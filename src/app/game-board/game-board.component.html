@@ -1,6 +1,4 @@
-<div>
-  <div style="position: relative">
-    <div *ngFor="let square in myGameBoard.board; let i = index" [ngStyle]="renderSquare(i)">
-    </div>
+<div [ngStyle]="renderGameContainer()">
+  <div *ngFor="let square of childGameBoard.board; let i = index" [ngStyle]="renderSquare(i)">
   </div>
 </div>

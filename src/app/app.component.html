@@ -1,7 +1,7 @@
 <app-character-create [currentCharacter]="currentCharacter" (sendUpCurrentCharacter)="setCurrentCharacter($event)" *ngIf="!currentCharacter"></app-character-create>
 
-<app-character-display [currentcharacter]="currentCharacter" *ngIf="currentCharacter"></app-character-display>
+<app-character-display [childCurrentCharacter]="currentCharacter" *ngIf="currentCharacter"></app-character-display>
 
-<app-gameBoard [childGameBoard]="masterGameBoard" [isPlaying]="isPlaying" *ngIf="currentCharacter && !isFighting"></app-gameBoard>
+<app-game-board [childGameBoard]="masterGameBoard" [isPlaying]="isPlaying" *ngIf="masterGameBoard.board.length>0 && !isFighting"></app-game-board>
 
 <button type="button" (click)="setIsPlaying()" *ngIf="currentCharacter && !isPlaying">Start Game</button>

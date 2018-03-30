@@ -3,7 +3,8 @@ import { Monster } from './monsters';
 import { abilitiesLibrary } from './abilities';
 
 export class Character {
-  constructor(public name: string, public characterClass: string, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, attackAttribute,  ...abilities){
+  constructor(public name: string, public characterClass: string, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, public imgPath: string, attackAttribute,  ...abilities: string[]){
+    let that = this;
     this.health = this.maxHealth;
     this.mana = this.maxMana;
     this.attack = (()=>{
@@ -13,7 +14,7 @@ export class Character {
       }
     })();
     abilities.forEach(function(abilityName){
-      this.abilities.push(abilitiesLibrary[abilityName]);
+      that.abilities.push(abilitiesLibrary[abilityName]);
     })
   }
 
@@ -23,7 +24,7 @@ export class Character {
   health: number;
   mana: number;
   items: Item[] = [itemsLibrary.healthPotion, itemsLibrary.manaPotion];
-  abilities: object[] = []
+  abilities = [];
 
   attack;
 }
@@ -35,16 +36,16 @@ export let characterFactory = {
 
   classLibrary: {
     mage: function(name: string){
-      return new Character(name, 'Mage', 50, 100, 4, 3, 10, 6, 5, 'strength', 'magicMissle', 'heal', 'fireball');
+      return new Character(name, 'Mage', 50, 100, 4, 3, 10, 6, 5, 'strength', './assets/img/spritesheet.png', 'magicMissle', 'heal', 'fireball');
     },
     warrior: function(name: string){
-      return new Character(name, 'Warrior', 100, 50, 8, 10, 2, 6, 5, 'strength', 'heal', 'doubleAttack' );
+      return new Character(name, 'Warrior', 100, 50, 8, 10, 2, 6, 5, 'strength', './assets/img/spritesheet.png', 'heal', 'doubleAttack' );
     },
     rogue: function(name: string){
-      return new Character(name, 'Rogue', 75, 75, 4, 6, 6, 10, 5, 'dexterity', 'heal', 'throwingKnife');
+      return new Character(name, 'Rogue', 75, 75, 4, 6, 6, 10, 5, 'dexterity', './assets/img/spritesheet.png', 'heal', 'throwingKnife');
     },
     archer: function(name: string){
-      return new Character(name, 'Archer', 75, 75, 4, 6, 6, 10, 5, 'dexterity', 'heal', 'magicArrow' );
+      return new Character(name, 'Archer', 75, 75, 4, 6, 6, 10, 5, 'dexterity', './assets/img/spritesheet.png', 'heal', 'magicArrow' );
     }
   }
 }
