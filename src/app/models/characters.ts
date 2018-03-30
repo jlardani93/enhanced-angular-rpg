@@ -1,3 +1,7 @@
+import { Item } from './items';
+import { Monster } from './monsters';
+import { Ability } from './abilities';
+
 export class Character {
   constructor(public name: string, public characterClass: string, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, attackAttribute, ...abilities){
     this.health = this.maxHealth;
@@ -5,7 +9,7 @@ export class Character {
     this.attack = (()=>{
       return function(monster: Monster){
         monster.health -= this[attackAttribute];
-        return `${this.name} attacked ${monster.name} for ${this[attackAttribute]} health.`
+        return `${this.name} attacked ${monster.monsterType} for ${this[attackAttribute]} health.`
       }
     })();
   }
