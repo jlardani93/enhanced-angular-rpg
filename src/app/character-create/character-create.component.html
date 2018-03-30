@@ -1,0 +1,19 @@
+<div *ngIf="!currentCharacter">
+  <h2>Create a New Character</h2>
+  <form>
+    <div>
+      <label>Character Name: </label>
+      <input #newName type="text" name="newName">
+    </div>
+    <div>
+      <label>Character Class: </label>
+      <select #lmao>
+        <option value='mage'>Mage (Excels at Intelligence)</option>
+        <option value='warrior'>Warrior (Excels at Strength)</option>
+        <option value='rogue'>Rogue (Excels at Dexterity)</option>
+        <option value='archer'>Archer (Excels at Dexterity)</option>
+      </select>
+    </div>
+    <button type="button" (click)="createCharacter(newName.value, lmao.value);">Create New Character!</button>
+  </form>
+</div>

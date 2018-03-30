@@ -4,10 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { CharacterDisplayComponent } from './character-display/character-display.component';
+import { CharacterCreateComponent } from './character-create/character-create.component';
+import { GameBoardComponent } from './game-board/game-board.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CharacterDisplayComponent,
+    CharacterCreateComponent,
+    GameBoardComponent
   ],
   imports: [
     BrowserModule,
@@ -18,3 +24,9 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+//Game Board component
+//New Player component
+//Player display component
+//Fight component
+//Main component is game component
