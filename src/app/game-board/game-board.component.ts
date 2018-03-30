@@ -9,6 +9,7 @@ import { gameBoard } from '../models/gameBoard';
 export class GameBoardComponent {
   @Input() childGameBoard;
   @Input() isPlaying;
+  @Input() currentCharacter;
 
   renderGameContainer = function(){
     return {'position': 'relative',
@@ -46,9 +47,16 @@ export class GameBoardComponent {
     myStyles['left'] = index % gameBoard.width * 100 + "px";
     myStyles['height'] = '100px';
     myStyles['width'] = '100px';
-    myStyles['background-image'] = 'url(assets/img/spritesheet.png)';
     myStyles['background-size'] = '1600px 1600px';
-    myStyles['background-position'] = '-800px -1500px';
+    if (gameBoard.board[index].player){
+      myStyles['background-image'] = 'url(assets/img/spritesheet.png)';
+      myStyles['background-position'] = this.currentCharacter.imgPath;
+      console.log(this.currentCharacter.imgPath);
+    }
+    if (gameBoard.board[index].monster){
+      myStyles['background-image'] = 'url(assets/img/spritesheet.png)';
+      myStyles['background-position'] = gameBoard.board[index].monster.imgPath;
+    }
     return myStyles;
   }
 }

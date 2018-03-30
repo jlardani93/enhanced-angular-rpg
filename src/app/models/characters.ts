@@ -3,7 +3,7 @@ import { Monster } from './monsters';
 import { abilitiesLibrary } from './abilities';
 
 export class Character {
-  constructor(public name: string, public characterClass: string, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, public imgPath: string, attackAttribute,  ...abilities: string[]){
+  constructor(public name: string, public characterClass: string, public maxHealth: number, public maxMana: number, public defense: number, public strength: number, public intelligence: number, public dexterity: number, public luck: number, attackAttribute, public imgPath: string, ...abilities: string[]){
     let that = this;
     this.health = this.maxHealth;
     this.mana = this.maxMana;
@@ -18,6 +18,8 @@ export class Character {
     })
   }
 
+  x: number = 5;
+  y: number = 5;
   level: number = 1;
   experience: number = 0;
   experienceToNext: number = 100;
