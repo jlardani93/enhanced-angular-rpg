@@ -11,6 +11,6 @@ export class Item {
 }
 
 export let itemsLibrary = {
-  healthPotion: new Item('Health Potion', 'Health', 30),
-  manaPotion: new Item('Mana Potion', 'Mana', 50)
+  healthPotion: new Item('Health Potion', 'health', 30),
+  manaPotion: new Item('Mana Potion', 'mana', 50)
 }

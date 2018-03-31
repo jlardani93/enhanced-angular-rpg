@@ -29,6 +29,10 @@ export class Character {
   abilities = [];
 
   attack;
+  useItem(myItem: Item, index: number){
+    console.log(myItem.useItem(this));
+    this.items.splice(index, 1); 
+  }
 }
 
 export let characterFactory = {

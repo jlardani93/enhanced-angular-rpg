@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { CharacterDisplayComponent } from './character-display/character-display.component';
 import { CharacterCreateComponent } from './character-create/character-create.component';
 import { GameBoardComponent } from './game-board/game-board.component';
+import { GameFightComponent } from './game-fight/game-fight.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterDisplayComponent,
     CharacterCreateComponent,
-    GameBoardComponent
+    GameBoardComponent,
+    GameFightComponent
   ],
   imports: [
     BrowserModule,
