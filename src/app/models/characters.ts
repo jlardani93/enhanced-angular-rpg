@@ -29,9 +29,42 @@ export class Character {
   abilities = [];
 
   attack;
+
   useItem(myItem: Item, index: number){
     console.log(myItem.useItem(this));
     this.items.splice(index, 1);
+  }
+
+  levelUp = function(){
+    console.log(`${this.name} leveled up!`);
+
+    this.health = Math.floor(this.health*1.2);
+    this.maxHealth =Math.floor(this.maxhealth*1.2);
+    this.mana =Math.floor(this.mana*1.2);
+    this.maxMana =Math.floor(this.maxMana*1.2);
+    this.defense =Math.floor(this.defense*1.2);
+    this.strength =Math.floor(this.strength*1.2);
+    this.intelligence =Math.floor(this.intelligence*1.2);
+    this.dexterity =Math.floor(this.dexterity*1.2);
+
+    switch (this.level){
+      case 1:
+        this.experienceToNext = 300;
+        break;
+      case 2:
+        this.experienceToNext = 600;
+        break;
+      case 3:
+        this.experienceToNext = 1000;
+        break;
+      case 4:
+        this.experienceToNext = 1500;
+        break;
+      case 5:
+        this.experienceToNext = 2100;
+        break;
+    }
+    this.level += 1; 
   }
 }
 

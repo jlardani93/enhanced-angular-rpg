@@ -36,11 +36,20 @@ export class GameFightComponent  {
   checkFightCondition(){
     if (this.currentMonster.health <= 0){
       console.log(`${this.currentCharacter.name} vanquished a ${this.currentMonster.name}`);
-      console.log("done fighting!");
+      console.log(`${this.currentCharacter.name} gained ${this.currentMonster.killExperience} experience`);
+      this.currentCharacter.experience += this.currentMonster.killExperience;
+      this.checkIfLevel();
       this.doneFighting.emit(true);
-      this.attacking = false; 
+      this.attacking = false;
       return false;
     }
     return true;
   }
+
+  checkIfLevel(){
+    if (this.currentCharacter.experienceToNext <= this.currentCharacter.experience) {
+      this.currentCharacter.levelUp();
+      this.checkIfLevel();
+    }
+  };
 }
