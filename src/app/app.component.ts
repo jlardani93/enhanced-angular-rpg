@@ -48,6 +48,10 @@ export class AppComponent {
       console.log(this.currentMonster);
       this.isFighting = true;
     }
+    if (gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item){
+      this.currentCharacter.items.push(gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item);
+      gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item = null; 
+    }
     console.log(this.isFighting);
     console.log(this.currentCharacter.abilities);
   }

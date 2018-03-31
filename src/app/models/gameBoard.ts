@@ -1,4 +1,5 @@
 import { Monster, monsterFactory } from './monsters';
+import { Item, itemsLibrary } from './items';
 
 export let gameBoard = {
   board: [],
@@ -23,6 +24,7 @@ export let gameBoard = {
       }
     }
     this.addMonster(2);
+    this.addItem(1);
   },
 
   addMonster: function(amount: number){
@@ -33,7 +35,17 @@ export let gameBoard = {
         break;
       }
       this.board[randomIndex].monster = monsterFactory.createMonster('skeleton');
-      console.log(this.board[randomIndex].monster);
+    }
+  },
+
+  addItem: function(amount: number){
+    for (let i = 1; i <= amount; i++){
+      let randomIndex = Math.floor(Math.random()*this.board.length);
+      if (randomIndex <= this.width*2){
+        this.addItem(1);
+        break;
+      }
+      this.board[randomIndex].item = itemsLibrary.healthPotion;
     }
   }
 }

@@ -32,7 +32,14 @@ export class GameBoardComponent {
     if (Math.floor(index / gameBoard.width) === 0){
       myStyles['background-position'] = '-0px -0px';
     } else if (Math.floor(index / gameBoard.width) === 1){
-      myStyles['background-position'] = '-0px -100px';
+      let randomNumber = Math.floor(Math.random()*6);
+      if (randomNumber === 1){
+        myStyles['background-position'] = '-700px 0px';
+      } else if (randomNumber === 2){
+        myStyles['background-position'] = '-1200px -400px';
+      } else {
+        myStyles['background-position'] = '-0px -100px';
+      }
     } else if (Math.floor(index / gameBoard.width) === 2){
       myStyles['background-position'] = '-0px -200px';
     } else {
@@ -56,6 +63,10 @@ export class GameBoardComponent {
     if (gameBoard.board[index].monster){
       myStyles['background-image'] = 'url(assets/img/spritesheet.png)';
       myStyles['background-position'] = gameBoard.board[index].monster.imgPath;
+    }
+    if (gameBoard.board[index].item){
+      myStyles['background-image'] = 'url(assets/img/spritesheet.png)';
+      myStyles['background-position'] = '-1500px -1100px';
     }
     return myStyles;
   }
