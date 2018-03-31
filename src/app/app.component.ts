@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Character } from './models/characters';
 import { gameBoard } from './models/gameBoard';
+import { Monster } from './models/monsters';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { gameBoard } from './models/gameBoard';
 export class AppComponent {
   title = 'app works!';
   currentCharacter: Character = null;
+  currentMonster: Monster = null;
   isFighting: boolean = false;
   isPlaying: boolean = false;
   masterGameBoard = gameBoard;
@@ -24,6 +26,14 @@ export class AppComponent {
     gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
   }
 
+  endFight = function(victory){
+    this.isFighting = false;
+    if (victory) {
+      this.currentMonster = null;
+      gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].monster = null;
+    }
+  }
+
   onKeyDown(event){
     let resetBool = false;
     let tempSquare = gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x];
@@ -33,7 +43,12 @@ export class AppComponent {
     if (event.key === "ArrowDown" && this.currentCharacter.y !== gameBoard.height-1 && (resetBool = true)) this.currentCharacter.y+=1;
     if (resetBool) tempSquare.player = false;
     gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
-    if (gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].monster) this.isFighting = true;
-    console.log(this.isFighting); 
+    if (gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].monster) {
+      this.currentMonster = gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].monster;
+      console.log(this.currentMonster);
+      this.isFighting = true;
+    }
+    console.log(this.isFighting);
+    console.log(this.currentCharacter.abilities);
   }
 }

@@ -2,7 +2,7 @@ export let abilitiesLibrary = {
   magicMissile: {
     name: "Magic Missile",
     mana: 5,
-    cast: (caster, target, duration) => {
+    cast: function(caster, target) {
       caster.mana -= this.mana;
       target.health -= caster.intelligence;
       return `${caster.name} cast ${this.name} on ${target.name} for ${caster.intelligence} damage`;
@@ -11,25 +11,25 @@ export let abilitiesLibrary = {
   throwingKnife: {
     name: "Throwing Knife",
     mana: 15,
-    cast: (caster, target) => {
+    cast: function(caster, target) {
       caster.mana -= this.mana;
-      target.health -= caster.dexterity;
+      target.health -= caster.dexterity*2;
       return `${caster.name} cast ${this.name} on ${target.name} for ${caster.intelligence} damage`;
     }
   },
   heal: {
     name: "Heal",
     mana: 20,
-    cast: (caster, target) => {
+    cast: function(caster, target) {
       caster.mana -= this.mana;
-      target.health += caster.intelligence*2;
-      return `${caster.name} cast ${this.name} on ${target.name} to increase health by ${caster.intelligence}`;
+      caster.health += caster.intelligence*2;
+      return `${caster.name} cast ${this.name} on ${caster.name} to increase health by ${caster.intelligence}`;
     }
   },
   doubleAttack: {
     name: "Double Attack",
     mana: 15,
-    cast: (caster, target) => {
+    cast: function(caster, target) {
       caster.mana -= this.mana;
       target.health -= caster.strength*2;
       return `${caster.name} cast ${this.name} on ${target.name} for ${caster.intelligence} damage`;
@@ -38,7 +38,7 @@ export let abilitiesLibrary = {
   fireball: {
     name: "Fireball",
     mana: 15,
-    cast: (caster, target) => {
+    cast: function(caster, target) {
       caster.mana -= this.mana;
       target.health -= caster.intelligence*2;
       return `${caster.name} cast ${this.name} on ${target.name} for ${caster.intelligence} damage`;
@@ -47,7 +47,7 @@ export let abilitiesLibrary = {
   magicArrow: {
     name: "Magic Arrow",
     mana: 15,
-    cast: (caster, target) => {
+    cast: function(caster, target) {
       caster.mana -= this.mana;
       target.health -= caster.dexterity*2;
       return `${caster.name} cast ${this.name} on ${target.name} for ${caster.intelligence} damage`;

@@ -31,7 +31,7 @@ export class Character {
   attack;
   useItem(myItem: Item, index: number){
     console.log(myItem.useItem(this));
-    this.items.splice(index, 1); 
+    this.items.splice(index, 1);
   }
 }
 
@@ -42,7 +42,7 @@ export let characterFactory = {
 
   classLibrary: {
     mage: function(name: string){
-      return new Character(name, 'Mage', 50, 100, 4, 3, 10, 6, 5, 'strength', '-900px -1400px', 'magicMissle', 'heal', 'fireball');
+      return new Character(name, 'Mage', 50, 100, 4, 3, 10, 6, 5, 'strength', '-900px -1400px', 'magicMissile', 'heal', 'fireball');
     },
     warrior: function(name: string){
       return new Character(name, 'Warrior', 100, 50, 8, 10, 2, 6, 5, 'strength', '-800px -1500px', 'heal', 'doubleAttack' );
