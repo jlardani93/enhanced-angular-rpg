@@ -38,7 +38,7 @@ export class GameBoardComponent {
       } else if (randomNumber === 2){
         myStyles['background-position'] = '-1200px -400px';
       } else {
-        myStyles['background-position'] = '-0px -100px';
+        myStyles['background-position'] = '-100px -100px';
       }
     } else if (Math.floor(index / gameBoard.width) === 2){
       myStyles['background-position'] = '-0px -200px';
