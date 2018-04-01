@@ -39,7 +39,7 @@ export let monsterFactory = {
       return new Monster('Zombie', 100, 50, 8, 10, 2, 6, 5, 'strength', 20, '-400px -1000px' );
     },
     skeleton: function(){
-      return new Monster('Skeleton', 75, 75, 4, 6, 6, 10, 5, 'dexterity', 20, "-100px -900px" );
+      return new Monster('Skeleton', 75, 75, 4, 6, 6, 10, 5, 'dexterity', 100, "-100px -900px" );
     },
     ghoul: function(){
       return new Monster('Ghoul', 75, 75, 4, 6, 6, 10, 5, 'dexterity', 20, '-500px -900px' );

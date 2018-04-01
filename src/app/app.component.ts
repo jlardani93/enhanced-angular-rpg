@@ -30,6 +30,8 @@ export class AppComponent {
     this.isFighting = false;
     if (victory) {
       this.currentMonster = null;
+      gameBoard.activeMonsters -= 1;
+      console.log(gameBoard.activeMonsters);
       gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].monster = null;
     }
   }
@@ -39,6 +41,12 @@ export class AppComponent {
     let tempSquare = gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x];
     if (event.key === "ArrowLeft" && this.currentCharacter.x !== 0 && (resetBool = true)) this.currentCharacter.x-=1;
     if (event.key === "ArrowRight" && this.currentCharacter.x !== gameBoard.width-1 && (resetBool = true)) this.currentCharacter.x+=1;
+    if (event.key === "ArrowRight" && this.currentCharacter.x === gameBoard.width-1 && (resetBool = true) && !gameBoard.activeMonsters) {
+      gameBoard.generateGameBoard();
+      this.currentCharacter.x -= (gameBoard.width-1);
+      gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
+      console.log(gameBoard);
+    }
     if (event.key === "ArrowUp" && this.currentCharacter.y !== 2 && (resetBool = true)) this.currentCharacter.y-=1;
     if (event.key === "ArrowDown" && this.currentCharacter.y !== gameBoard.height-1 && (resetBool = true)) this.currentCharacter.y+=1;
     if (resetBool) tempSquare.player = false;
@@ -50,7 +58,7 @@ export class AppComponent {
     }
     if (gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item){
       this.currentCharacter.items.push(gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item);
-      gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item = null; 
+      gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item = null;
     }
     console.log(this.isFighting);
     console.log(this.currentCharacter.abilities);

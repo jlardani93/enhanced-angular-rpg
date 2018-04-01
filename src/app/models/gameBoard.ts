@@ -6,7 +6,10 @@ export let gameBoard = {
   board2d: [],
   width: 10,
   height: 10,
+  activeMonsters: 0,
   generateGameBoard: function(){
+    this.board.splice(0, this.board.length);
+    this.board2d.splice(0, this.board2d.length);
     for (let i = 0; i < this.height*this.width; i++) {
       this.board.push({
         player: false,
@@ -23,18 +26,20 @@ export let gameBoard = {
         index++;
       }
     }
-    this.addMonster(2);
+    this.addMonster(1);
     this.addItem(1);
+    this.generateTextures();
   },
 
   addMonster: function(amount: number){
     for (let i = 1; i <= amount; i++){
       let randomIndex = Math.floor(Math.random()*this.board.length);
-      if (randomIndex <= this.width*2){
+      if (randomIndex <= this.width*2 || this.board[randomIndex].monster){
         this.addMonster(1);
         break;
       }
       this.board[randomIndex].monster = monsterFactory.createMonster('skeleton');
+      this.activeMonsters += 1;
     }
   },
 
@@ -46,6 +51,27 @@ export let gameBoard = {
         break;
       }
       this.board[randomIndex].item = itemsLibrary.healthPotion;
+    }
+  },
+
+  generateTextures: function(){
+    for (let i = 0; i < this.board.length; i++) {
+      if (Math.floor(i / this.width) === 0){
+        this.board[i].textureImgPath = '-0px -0px';
+      } else if (Math.floor(i / this.width) === 1){
+        let randomNumber = Math.floor(Math.random()*6);
+        if (randomNumber === 1){
+          this.board[i].textureImgPath = '-700px 0px';
+        } else if (randomNumber === 2){
+          this.board[i].textureImgPath = '-1200px -400px';
+        } else {
+          this.board[i].textureImgPath = '-100px -100px';
+        }
+      } else if (Math.floor(i / this.width) === 2){
+        this.board[i].textureImgPath = '-0px -200px';
+      } else {
+        this.board[i].textureImgPath = '-200px -300px';
+      }
     }
   }
 }

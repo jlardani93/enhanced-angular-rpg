@@ -39,7 +39,7 @@ export class Character {
     console.log(`${this.name} leveled up!`);
 
     this.health = Math.floor(this.health*1.2);
-    this.maxHealth =Math.floor(this.maxhealth*1.2);
+    this.maxHealth =Math.floor(this.maxHealth*1.2);
     this.mana =Math.floor(this.mana*1.2);
     this.maxMana =Math.floor(this.maxMana*1.2);
     this.defense =Math.floor(this.defense*1.2);
@@ -64,7 +64,7 @@ export class Character {
         this.experienceToNext = 2100;
         break;
     }
-    this.level += 1; 
+    this.level += 1;
   }
 }
 

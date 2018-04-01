@@ -29,22 +29,7 @@ export class GameBoardComponent {
     myStyles['width'] = '100px';
     myStyles['background-image'] = 'url(assets/img/spritesheet.png)';
     myStyles['background-size'] = '1600px 1600px';
-    if (Math.floor(index / gameBoard.width) === 0){
-      myStyles['background-position'] = '-0px -0px';
-    } else if (Math.floor(index / gameBoard.width) === 1){
-      let randomNumber = Math.floor(Math.random()*6);
-      if (randomNumber === 1){
-        myStyles['background-position'] = '-700px 0px';
-      } else if (randomNumber === 2){
-        myStyles['background-position'] = '-1200px -400px';
-      } else {
-        myStyles['background-position'] = '-100px -100px';
-      }
-    } else if (Math.floor(index / gameBoard.width) === 2){
-      myStyles['background-position'] = '-0px -200px';
-    } else {
-      myStyles['background-position'] = '-200px -300px';
-    }
+    myStyles['background-position'] = gameBoard.board[index].textureImgPath;
     return myStyles;
   }
 
@@ -67,6 +52,10 @@ export class GameBoardComponent {
     if (gameBoard.board[index].item){
       myStyles['background-image'] = 'url(assets/img/spritesheet.png)';
       myStyles['background-position'] = '-1500px -1100px';
+    }
+    if ((index === ((gameBoard.width*gameBoard.height)/2)+(gameBoard.width-1)) && !gameBoard.activeMonsters){
+      myStyles['background-size'] = '100px 100px';
+      myStyles['background-image'] = 'url(assets/img/arrow.png)';
     }
     return myStyles;
   }
