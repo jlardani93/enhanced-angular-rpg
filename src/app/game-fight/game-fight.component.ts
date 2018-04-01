@@ -43,6 +43,12 @@ export class GameFightComponent  {
       this.attacking = false;
       return false;
     }
+    if (this.currentCharacter.health <= 0){
+      console.log(`${this.currentCharacter.name} was slaughtered by a ${this.currentMonster.name}`);
+      this.doneFighting.emit(false);
+      this.attacking = false;
+      return false;
+    }
     return true;
   }
 
