@@ -1,8 +1,8 @@
 
-<div (keydown)="onKeyDown($event)">
-  <app-character-create [currentCharacter]="currentCharacter" (sendUpCurrentCharacter)="setCurrentCharacter($event)" *ngIf="!currentCharacter"></app-character-create>
+<div class="row justify-content-center" (keydown)="onKeyDown($event)">
+  <app-character-create class="col-md-12 text-center" [currentCharacter]="currentCharacter" (sendUpCurrentCharacter)="setCurrentCharacter($event)" *ngIf="!currentCharacter"></app-character-create>
 
-  <app-character-display [childCurrentCharacter]="currentCharacter" *ngIf="currentCharacter"></app-character-display>
+  <app-character-display class="col-md-12"[childCurrentCharacter]="currentCharacter" *ngIf="currentCharacter"></app-character-display>
 
   <app-game-board [currentCharacter]="currentCharacter" [childGameBoard]="masterGameBoard" [isPlaying]="isPlaying" *ngIf="masterGameBoard.board.length>0 && !isFighting"></app-game-board>
 

@@ -2,3 +2,19 @@
   height: 100px;
   width: 100px;
 }
+
+.row{
+  box-shadow: 0 0 0 black;
+  border: none;
+  margin: 0 !important;
+  padding: 10px !important;
+}
+
+.statsRow .col-md12, .statsRow .col-md-6 {
+  margin: none !important;
+  padding: none !important;
+}
+
+.statsRow p {
+  margin: 0px;
+}
