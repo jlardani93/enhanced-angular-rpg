@@ -22,12 +22,13 @@
         <p>Dexterity: {{childCurrentCharacter.dexterity}}</p>
       </div>
     </div>
-    <ul>
+    <div id="itemContainer">
       <li *ngFor="let currentItem of childCurrentCharacter.items; let i = index">
-        <h4>{{currentItem.name}}</h4>
-        <button type="button" (click)="childCurrentCharacter.useItem(currentItem, i)">Use Item</button>
+        <div class="item" (click)="childCurrentCharacter.useItem(currentItem, i)" [ngStyle]="renderItem(i)">
+          <h4>{{currentItem.name}}</h4>
+        </div>
       </li>
-    </ul>
+    </div>
   </div>
   <div class="col-md-3">
   </div>

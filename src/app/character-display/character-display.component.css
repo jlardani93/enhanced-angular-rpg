@@ -3,6 +3,21 @@
   width: 100px;
 }
 
+#itemContainer {
+  margin-top: 10px;
+  border: 2px solid black;
+  overflow-x: auto;
+  background-color: white;
+  box-shadow: 0 0 5px inset;
+  padding: 10px;
+}
+
+li {
+  list-style-type: none;
+  display: inline-block;
+  font-size: 16px; 
+}
+
 .row{
   box-shadow: 0 0 0 black;
   border: none;
@@ -15,6 +30,17 @@
   padding: none !important;
 }
 
+.col-md-6 .row {
+  background-color: white;
+  border-radius: 0;
+  border: 2px solid black;
+  box-shadow: 0 0 5px black inset;
+}
+
 .statsRow p {
   margin: 0px;
+}
+
+.item {
+  background-color: white;
 }

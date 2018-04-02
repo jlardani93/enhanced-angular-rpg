@@ -1,5 +1,5 @@
 export class Item {
-  constructor(public name: string, attribute, magnitude){
+  constructor(public name: string, attribute, magnitude, public imgPath: string){
     this.useItem = (()=>{
       return function(consumer){
         consumer[attribute]+=magnitude;
@@ -11,6 +11,6 @@ export class Item {
 }
 
 export let itemsLibrary = {
-  healthPotion: new Item('Health Potion', 'health', 30),
-  manaPotion: new Item('Mana Potion', 'mana', 50)
+  healthPotion: new Item('Health Potion', 'health', 30, '-1100px -1200px'),
+  manaPotion: new Item('Mana Potion', 'mana', 50, '-1300px -1200px')
 }
