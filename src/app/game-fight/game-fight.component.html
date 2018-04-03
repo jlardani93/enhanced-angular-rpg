@@ -1,10 +1,21 @@
-<div>
-  <div *ngIf="!attacking">
-    <button type="button" (click)="attack()">Attack!</button>
-    <select #selectedAbility>
-      <option *ngFor="let ability of currentCharacter.abilities; let i = index" [value]="i">{{ability.name}} (Mana: {{ability.mana}})</option>
-    </select>
-    <button type="button" (click)="useAbility(selectedAbility.value, currentCharacter, currentMonster)">Cast Ability!</button>
+<div class="row">
+  <div class="col-md-3">
   </div>
-  <p>{{currentMonster.name}}, {{currentMonster.health}}/{{currentMonster.maxHealth}}</p>
+  <div class="col-md-6">
+    <div *ngIf="!attacking">
+      <button type="button" (click)="attack()">Attack!</button>
+      <select #selectedAbility>
+        <option *ngFor="let ability of currentCharacter.abilities; let i = index" [value]="i">{{ability.name}} (Mana: {{ability.mana}})</option>
+      </select>
+      <button type="button" (click)="useAbility(selectedAbility.value, currentCharacter, currentMonster)">Cast Ability!</button>
+    </div>
+    <div id="monsterImage" [ngStyle]="renderMonsterImage()">
+    </div>
+    <p>{{currentMonster.name}}, {{currentMonster.health}}/{{currentMonster.maxHealth}}</p>
+    <div id="battleLog">
+    </div>
+    <p *ngFor="let entry of battleLog" [ngStyle]="renderLogEntry()"></p>
+  </div>
+  <div class="col-md-3">
+  </div>
 </div>

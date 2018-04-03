@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Character } from '../models/characters';
 import { Monster } from '../models/monsters';
 
@@ -7,11 +7,40 @@ import { Monster } from '../models/monsters';
   templateUrl: './game-fight.component.html',
   styleUrls: ['./game-fight.component.css']
 })
-export class GameFightComponent  {
+export class GameFightComponent implements OnInit {
   @Input() currentMonster;
   @Input() currentCharacter;
   @Output() doneFighting = new EventEmitter();
   attacking: boolean = false;
+  battleLog: string[] = [];
+
+  ngOnInit(){
+    this.battleLog = [{
+      message: "hallelujah",
+      styleCode: 1
+    }];
+    console.log(this.battleLog);
+  }
+
+  renderMonsterImage(){
+    let myStyle = {
+      'height': '100px',
+      'width': '100px',
+      'background-image': 'url("../assets/img/spritesheet.png")',
+      'background-size': '1600px 1600px',
+      'background-position': this.currentMonster.imgPath,
+      'display': 'block',
+      'margin-right': 'auto',
+      'margin-left': 'auto',
+      'margin-top': '30px',
+      'margin-bottom': '30px'
+    }
+    return myStyle;
+  }
+
+  renderLogEntry(){
+
+  }
 
   attack(){
     this.attacking = true;

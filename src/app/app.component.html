@@ -9,7 +9,7 @@
   <button type="button" (click)="setIsPlaying()" *ngIf="currentCharacter && !isPlaying">Start Game</button>
 </div>
 
-<app-game-fight
+<app-game-fight class="col-md-12"
 [currentMonster]="currentMonster"
 [currentCharacter]="currentCharacter"
 (doneFighting)="endFight($event)"

@@ -26,6 +26,13 @@ export class Monster {
   attack;
 }
 
+export let monsterLevelKey = {
+  1: ['bat'],
+  2: ['zombie'],
+  3: ['skeleton'],
+  4: ['ghoul']
+}
+
 export let monsterFactory = {
   createMonster: function(name: string){
     return this.monsterLibrary[name]();
@@ -33,16 +40,16 @@ export let monsterFactory = {
 
   monsterLibrary: {
     bat: function(){
-      return new Monster('Bat', 50, 100, 4, 3, 10, 6, 5, 'strength', 20, '-400px -900px'  );
+      return new Monster('Bat', 25, 50, 4, 3, 10, 6, 5, 'strength', 20, '-400px -900px'  );
     },
     zombie: function(){
-      return new Monster('Zombie', 100, 50, 8, 10, 2, 6, 5, 'strength', 20, '-400px -1000px' );
+      return new Monster('Zombie', 50, 50, 8, 5, 2, 6, 5, 'strength', 40, '-400px -1000px' );
     },
     skeleton: function(){
-      return new Monster('Skeleton', 75, 75, 4, 6, 6, 10, 5, 'dexterity', 100, "-100px -900px" );
+      return new Monster('Skeleton', 100, 50, 4, 10, 6, 10, 5, 'strenth', 75, "-100px -900px" );
     },
     ghoul: function(){
-      return new Monster('Ghoul', 75, 75, 4, 6, 6, 10, 5, 'dexterity', 20, '-500px -900px' );
+      return new Monster('Ghoul', 150, 50, 4, 6, 16, 10, 5, 'strength', 100, '-500px -900px' );
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Monster, monsterFactory } from './monsters';
+import { Monster, monsterFactory, monsterLevelKey } from './monsters';
 import { Item, itemsLibrary } from './items';
 
 export let gameBoard = {
@@ -7,7 +7,7 @@ export let gameBoard = {
   width: 10,
   height: 10,
   activeMonsters: 0,
-  generateGameBoard: function(){
+  generateGameBoard: function(character, roomNumber){
     this.board.splice(0, this.board.length);
     this.board2d.splice(0, this.board2d.length);
     for (let i = 0; i < this.height*this.width; i++) {
@@ -26,19 +26,23 @@ export let gameBoard = {
         index++;
       }
     }
-    this.addMonster(1);
-    this.addItem(1);
+
+    let myMonsterNumber = (roomNumber >= 6) ? 5 : roomNumber;
+    let myItemNumber = Math.floor(Math.random()*2)+1;
+    this.addMonster(myMonsterNumber, character.level);
+    this.addItem(myItemNumber);
     this.generateTextures();
   },
 
-  addMonster: function(amount: number){
+  addMonster: function(amount: number, level: number){
     for (let i = 1; i <= amount; i++){
       let randomIndex = Math.floor(Math.random()*this.board.length);
       if (randomIndex <= this.width*2 || this.board[randomIndex].monster){
-        this.addMonster(1);
+        this.addMonster(1, level);
         break;
       }
-      this.board[randomIndex].monster = monsterFactory.createMonster('skeleton');
+      let randomMonsterLevel = Math.floor(Math.random()*level)+1;
+      this.board[randomIndex].monster = monsterFactory.createMonster(monsterLevelKey[randomMonsterLevel.toString()]);
       this.activeMonsters += 1;
     }
   },
