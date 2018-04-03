@@ -1,15 +1,22 @@
 <div class="row">
-  <div class="col-md-3">
-  </div>
   <div class="col-md-6">
     <div class="row statsRow">
       <div class="col-md-12" style="text-align: center">
         <h3>{{childCurrentCharacter.name}}</h3>
         <h4>Class: {{childCurrentCharacter.characterClass}}</h4>
         <p>Level: {{childCurrentCharacter.level}}</p>
-        <p>Health: {{childCurrentCharacter.health}} / {{childCurrentCharacter.maxHealth}}</p>
-        <p>Mana: {{childCurrentCharacter.mana}} / {{childCurrentCharacter.maxMana}}<p>
-        <p>Experience: {{childCurrentCharacter.experience}} / {{childCurrentCharacter.experienceToNext}}</p>
+        <div class="progressBar">
+          <label>Health: {{childCurrentCharacter.health}} / {{childCurrentCharacter.maxHealth}}</label>
+          <progress class="healthBar" value="{{childCurrentCharacter.health}}" max="{{childCurrentCharacter.maxHealth}}"></progress><br>
+        </div>
+        <div class="progressBar">
+          <label>Mana: {{childCurrentCharacter.mana}} / {{childCurrentCharacter.maxMana}}</label>
+          <progress class="manaBar" value="{{childCurrentCharacter.mana}}" max="{{childCurrentCharacter.maxMana}}"></progress><br>
+        </div>
+        <div class="progressBar">
+          <label>Experience: {{childCurrentCharacter.experience}} / {{childCurrentCharacter.experienceToNext}}</label>
+          <progress class="experienceBar" value="{{childCurrentCharacter.experience}}" max="{{childCurrentCharacter.experienceToNext}}"></progress><br>
+        </div>
       </div>
     </div>
     <div class="row statsRow">
@@ -22,14 +29,14 @@
         <p>Dexterity: {{childCurrentCharacter.dexterity}}</p>
       </div>
     </div>
+  </div>
+  <div class="col-md-6">
     <div id="itemContainer">
       <li *ngFor="let currentItem of childCurrentCharacter.items; let i = index">
         <div class="item" (click)="childCurrentCharacter.useItem(currentItem, i)" [ngStyle]="renderItem(i)">
-          <h4>{{currentItem.name}}</h4>
+          <span>{{currentItem.name}}</span>
         </div>
       </li>
     </div>
-  </div>
-  <div class="col-md-3">
   </div>
 </div>

@@ -12,14 +12,17 @@ export class GameFightComponent implements OnInit {
   @Input() currentCharacter;
   @Output() doneFighting = new EventEmitter();
   attacking: boolean = false;
-  battleLog: string[] = [];
+  battleLog = [];
+
+  addToBL(message: string, styleCode: number){
+    this.battleLog.push({
+      message: message,
+      styleCode: styleCode
+    })
+  }
 
   ngOnInit(){
-    this.battleLog = [{
-      message: "hallelujah",
-      styleCode: 1
-    }];
-    console.log(this.battleLog);
+    this.battleLog = [];
   }
 
   renderMonsterImage(){
@@ -38,21 +41,41 @@ export class GameFightComponent implements OnInit {
     return myStyle;
   }
 
-  renderLogEntry(){
-
+  renderLogEntry(styleCode: number){
+    let myStyles = {
+      'width': '100%',
+      'margin': '5px',
+      'margin-right': '10px',
+      'margin-left': 'auto',
+    };
+    if (styleCode === 2) {
+      myStyles['color'] = 'red';
+    }
+    if (styleCode === 3) {
+      myStyles['font-weight'] = 'bold';
+    }
+    if (styleCode === 4) {
+      myStyles['color'] = 'red';
+      myStyles['font-weight'] = 'bold';
+    }
+    if (styleCode === 5) {
+      myStyles['color'] = 'gold';
+      myStyles['font-weight'] = 'bold';
+    }
+    return myStyles;
   }
 
   attack(){
     this.attacking = true;
-    let playerMove = ()=>{console.log(this.currentCharacter.attack(this.currentMonster));}
-    let monsterMove = ()=>{console.log(this.currentMonster.attack(this.currentCharacter));}
+    let playerMove = ()=>{this.addToBL(this.currentCharacter.attack(this.currentMonster), 1);}
+    let monsterMove = ()=>{this.addToBL(this.currentMonster.attack(this.currentCharacter), 2);}
     this.attackSequence(playerMove, monsterMove);
   }
 
   useAbility(index: number, caster: Character, target: Monster){
     this.attacking = true;
-    let playerMove = ()=>{console.log(this.currentCharacter.abilities[index].cast(caster, target));};
-    let monsterMove = ()=>{console.log(this.currentMonster.attack(this.currentCharacter));};
+    let playerMove = ()=>{this.addToBL(this.currentCharacter.abilities[index].cast(caster, target), 1);};
+    let monsterMove = ()=>{this.addToBL(this.currentMonster.attack(this.currentCharacter), 2);};
     this.attackSequence(playerMove, monsterMove);
   }
 
@@ -64,18 +87,22 @@ export class GameFightComponent implements OnInit {
 
   checkFightCondition(){
     if (this.currentMonster.health <= 0){
-      console.log(`${this.currentCharacter.name} vanquished a ${this.currentMonster.name}`);
-      console.log(`${this.currentCharacter.name} gained ${this.currentMonster.killExperience} experience`);
+      this.addToBL((`${this.currentCharacter.name} vanquished a ${this.currentMonster.name}`), 3);
+      this.addToBL((`${this.currentCharacter.name} gained ${this.currentMonster.killExperience} experience`), 5);
       this.currentCharacter.experience += this.currentMonster.killExperience;
       this.checkIfLevel();
-      this.doneFighting.emit(true);
-      this.attacking = false;
+      setTimeout(()=>{
+        this.doneFighting.emit(true);
+        this.attacking = false;
+      }, 2000);
       return false;
     }
     if (this.currentCharacter.health <= 0){
-      console.log(`${this.currentCharacter.name} was slaughtered by a ${this.currentMonster.name}`);
-      this.doneFighting.emit(false);
-      this.attacking = false;
+      this.addToBL((`${this.currentCharacter.name} was slaughtered by a ${this.currentMonster.name}`), 4);
+      setTimeout(()=>{
+        this.doneFighting.emit(false);
+        this.attacking = false;
+      }, 2000);
       return false;
     }
     return true;

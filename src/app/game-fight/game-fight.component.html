@@ -1,6 +1,4 @@
 <div class="row">
-  <div class="col-md-3">
-  </div>
   <div class="col-md-6">
     <div *ngIf="!attacking">
       <button type="button" (click)="attack()">Attack!</button>
@@ -12,10 +10,12 @@
     <div id="monsterImage" [ngStyle]="renderMonsterImage()">
     </div>
     <p>{{currentMonster.name}}, {{currentMonster.health}}/{{currentMonster.maxHealth}}</p>
-    <div id="battleLog">
+    <div class="progressBar">
+      <label>Health: {{currentMonster.health}} / {{currentMonster.maxHealth}}</label>
+      <progress class="healthBar" value="{{currentMonster.health}}" max="{{currentMonster.maxHealth}}"></progress><br>
     </div>
-    <p *ngFor="let entry of battleLog" [ngStyle]="renderLogEntry()"></p>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-6" id="battleLog">
+    <p *ngFor="let entry of battleLog" [ngStyle]="renderLogEntry(entry.styleCode)">{{entry.message}}</p>
   </div>
 </div>

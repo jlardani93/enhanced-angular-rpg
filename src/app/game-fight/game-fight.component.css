@@ -1,0 +1,15 @@
+progress {
+  background: red;
+}
+
+progress::-webkit-progress-value {
+  background: green;
+}
+
+#battleLog {
+  border: 1px solid black;
+  background-color: white;
+  height: 250px;
+  padding: 10px;
+  overflow-y: auto;
+}
