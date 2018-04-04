@@ -14,14 +14,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.itemService.itemsData.subscribe(data => {
-      this.itemService.items = [];
-      data.forEach(item => {
-        this.itemService.items.push(new Item(item.itemName, item.attribute, item.magnitude, item.imagePosition));
-        this.itemService.items[this.itemService.items.length-1].key = item.$key;
-        console.log(item.$key);
-      })
-    })
   }
 
   renderItemImage(imgPath: string){

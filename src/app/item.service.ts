@@ -10,6 +10,14 @@ export class ItemService {
 
   constructor(private database: AngularFireDatabase) {
     this.itemsData = database.list('items');
+    this.itemsData.subscribe(data => {
+      this.items = [];
+      data.forEach(item => {
+        this.items.push(new Item(item.itemName, item.attribute, item.magnitude, item.imagePosition));
+        this.items[this.items.length-1].key = item.$key;
+        console.log(item.$key);
+      })
+    })
   }
 
   addItem(newItem) {

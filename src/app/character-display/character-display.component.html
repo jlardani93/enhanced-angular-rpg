@@ -33,7 +33,7 @@
   <div class="col-md-6">
     <div id="itemContainer">
       <li *ngFor="let currentItem of childCurrentCharacter.items; let i = index">
-        <div class="item" (click)="childCurrentCharacter.useItem(currentItem, i)" [ngStyle]="renderItem(i)">
+        <div class="item" (click)="childCurrentCharacter.useItem(currentItem, i)" [ngStyle]="renderItem(currentItem.imgPath)">
           <span>{{currentItem.name}}</span>
         </div>
       </li>

@@ -25,7 +25,7 @@ export class Character {
   experienceToNext: number = 100;
   health: number;
   mana: number;
-  items: Item[] = [itemsLibrary.healthPotion, itemsLibrary.manaPotion];
+  items: Item[] = [];
   abilities = [];
 
   attack;

@@ -2,13 +2,17 @@ import { Component, HostListener } from '@angular/core';
 import { Character } from '../models/characters';
 import { gameBoard } from '../models/gameBoard';
 import { Monster } from '../models/monsters';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  styleUrls: ['./game.component.css'],
+  providers: [ItemService]
 })
 export class GameComponent {
+
+  constructor(private itemService: ItemService){};
 
   title = 'app works!';
   currentCharacter: Character = null;
@@ -51,6 +55,9 @@ export class GameComponent {
     this.isPlaying = true;
     gameBoard.generateGameBoard(this.currentCharacter, this.roomNumber);
     gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
+    this.currentCharacter.items.push(this.itemService.items[0]);
+    this.currentCharacter.items.push(this.itemService.items[1]);
+
   }
 
   endFight = function(victory){
