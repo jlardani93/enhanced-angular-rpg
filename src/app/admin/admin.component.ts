@@ -18,8 +18,31 @@ export class AdminComponent implements OnInit {
       this.itemService.items = [];
       data.forEach(item => {
         this.itemService.items.push(new Item(item.itemName, item.attribute, item.magnitude, item.imagePosition));
+        this.itemService.items[this.itemService.items.length-1].key = item.$key;
+        console.log(item.$key);
       })
     })
+  }
+
+  renderItemImage(imgPath: string){
+    let myStyle = {
+      'height': '100px',
+      'width': '100px',
+      'border': '1px solid black',
+      'background-size': '1600px 1600px',
+      'background-image': 'url("../assets/img/spritesheet.png")',
+      'background-position': imgPath,
+      'display': 'block',
+      'margin-right': 'auto',
+      'margin-left': 'auto'
+    };
+    return myStyle;
+  }
+
+  removeItem(itemKey){
+    if (confirm("Are you sure you want to permenantly delete this item from the database?")){
+      this.itemService.removeItem(itemKey);
+    }
   }
 
   showItems: boolean = false;

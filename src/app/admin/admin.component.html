@@ -1,3 +1,5 @@
+
+
 <form class="card" action="index.html" method="post">
   <div class="card-header">
     <h3>Create a New Item!</h3>
@@ -17,6 +19,7 @@
         <option value="intelligence">Intelligence</option>
         <option value="dexterity">Dexterity</option>
         <option value="luck">Luck</option>
+        <option value="experience">Experience</option>
       </select>
     </div>
     <div class="form-group">
@@ -35,8 +38,8 @@
 
 <div class="row" *ngIf="showItems">
   <div class="col-md-2 card" *ngFor="let item of itemService.items">
-    <div class="card-header">
-      <h3>{{item.name}}</h3>
-    </div>
+      <h3 class="card-title">{{item.name}}</h3>
+      <div class="itemImage" [ngStyle]="renderItemImage(item.imgPath)"></div>
+      <button type="button" (click)="removeItem(item.key)">Delete Item</button>
   </div>
 </div>

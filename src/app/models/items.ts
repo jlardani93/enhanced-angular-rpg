@@ -8,6 +8,7 @@ export class Item {
     })();
   }
   useItem;
+  key;
 }
 
 export let itemsLibrary = {

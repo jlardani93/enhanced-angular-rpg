@@ -5,6 +5,11 @@ footer {
   width: 100%;
   font-size: 20px;
   font-weight: bold;
-  background-color: red;
+  background-color: #470900;
+  color: white;
+  text-align: center;
+}
 
+footer a {
+  color: white;
 }
