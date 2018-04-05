@@ -1,5 +1,5 @@
 import { Monster, monsterFactory, monsterLevelKey } from './monsters';
-import { Item, itemsLibrary } from './items';
+import { Item } from './items';
 
 export let gameBoard = {
   board: [],

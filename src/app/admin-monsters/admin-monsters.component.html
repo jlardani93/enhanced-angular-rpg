@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-md-6">
+    <form class="card" action="index.html" method="post">
+      <div class="card-header">
+        <h3>Create a New Monster!</h3>
+      </div>
+      <div class="card-block">
+        <div class="form-group">
+          <label for="">Monster Name</label>
+          <input #monsterName [ngModel]="monstername" type="text" name="monstername" value="">
+        </div>
+        <div class="form-group">
+          <label for="">Monster Level</label>
+          <input #monsterLevel type="text" name="monsterlevel" value="">
+        </div>
+        <div class="form-group">
+          <label for="">Maximum Health: </label>
+          <input #maximumHealth type="text" name="maximumhealth" value="">
+        </div>
+        <div class="form-group">
+          <label for="">Maximum Mana: </label>
+          <input #maximumMana type="text" name="maximummana" value="">
+        </div>
+        <div class="form-group">
+          <label for="">Defense: </label>
+          <input #defense type="text" name="defense" value="">
+        </div>
+        <div class="form-group">
+          <label for="">Strength: </label>
+          <input #strength type="text" name="strength" value="">
+        </div>
+        <div class="form-group">
+          <label for="">Intelligence: </label>
+          <input #intelligence type="text" name="intelligence" value="">
+        </div>
+        <div class="form-group">
+          <label for="">Dexterity: </label>
+          <input #dexterity type="text" name="dexterity" value="">
+        </div>
+        <div class="form-group">
+          <label for="">Luck: </label>
+          <input #luck type="text" name="luck" value="">
+        </div>
+        <div class="">
+          <label for="">Attack Attribute: </label>
+          <select #attackAttribute class="" name="">
+            <option value="strength">Strength</option>
+            <option value="intelligence">Intelligence</option>
+            <option value="dexterity">Dexterity</option>
+          </select>
+        </div>
+        <div class="">
+          <label for="">Kill Experience: </label>
+          <input #killExperience type="text" name="killExperience" value="">
+        </div>
+        <div class="form-group">
+          <label>Spritesheet Position</label>
+          <input #spritesheetPosition [ngModel]="spritesheetposition" (ngModelChange)="renderPreviewImage(spritesheetPosition.value, itemPreviewImage)" name="spritesheetposition" type="text">
+        </div>
+        <button type="button" (click)="newMonster(monsterName.value, maximumHealth.value, maximumMana.value, defense.value, strength.value, intelligence.value, dexterity.value, luck.value, attackAttribute.value, killExperience.value, spritesheetPosition.value)">Create new Item</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6" >
+    <div class="card">
+      <h3>{{monsterName.value}}</h3>
+      <div #itemPreviewImage>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" (click)="toggleMonsters()">Show Monsters</button>
+
+<div class="row" *ngIf="showMonsters">
+  <div class="col-md-2 card" *ngFor="let monster of monsterService.monsters">
+    <h3 class="card-title">{{monster.name}}</h3>
+    <div class="monsterImage" [ngStyle]="renderMonsterImage(monster.imgPath)"></div>
+    <button type="button" (click)="removeMonster(monster.key)">Delete Item</button>
+  </div>
+</div>

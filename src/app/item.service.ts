@@ -27,8 +27,6 @@ export class ItemService {
 
   removeItem(itemKey) {
     let itemToRemove = this.database.object('items/' + itemKey);
-    itemToRemove.subscribe(()=>{console.log(itemToRemove)})
-    console.log(itemToRemove);
     itemToRemove.remove();
   }
 }

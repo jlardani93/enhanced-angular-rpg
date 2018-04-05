@@ -22,6 +22,7 @@ export class Monster {
   mana: number;
   items: Item[] = [];
   abilities: object[] = [];
+  key; 
 
   attack;
 }

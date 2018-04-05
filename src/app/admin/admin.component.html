@@ -1,45 +1,10 @@
 
+<nav class="">
+    <ul class="">
+      <li (click)="goToItems()">Items</li>
+      <li (click)="goToMonsters()">Monsters</li>
+    </ul>
+</nav>
 
-<form class="card" action="index.html" method="post">
-  <div class="card-header">
-    <h3>Create a New Item!</h3>
-  </div>
-  <div class="card-block">
-    <div class="form-group">
-      <label for="">Item Name</label>
-      <input #itemName type="text" name="" value="">
-    </div>
-    <div class="form-group">
-      <label for="">Modified Attribute</label>
-      <select #modifiedAttribute>
-        <option value="health">Health</option>
-        <option value="mana">Mana</option>
-        <option value="defense">Defense</option>
-        <option value="strength">Strength</option>
-        <option value="intelligence">Intelligence</option>
-        <option value="dexterity">Dexterity</option>
-        <option value="luck">Luck</option>
-        <option value="experience">Experience</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Magnitude of Impact</label>
-      <input #magnitude type="text">
-    </div>
-    <div class="form-group">
-      <label>Spritesheet Position</label>
-      <input #spritesheetPosition type="text">
-    </div>
-    <button type="button" (click)="newItem(itemName.value, modifiedAttribute.value, magnitude.value, spritesheetPosition.value)">Create new Item</button>
-  </div>
-</form>
-
-<button type="button" (click)="toggleItems()">Show Items</button>
-
-<div class="row" *ngIf="showItems">
-  <div class="col-md-2 card" *ngFor="let item of itemService.items">
-      <h3 class="card-title">{{item.name}}</h3>
-      <div class="itemImage" [ngStyle]="renderItemImage(item.imgPath)"></div>
-      <button type="button" (click)="removeItem(item.key)">Delete Item</button>
-  </div>
-</div>
+<app-admin-items *ngIf="showItems"></app-admin-items>
+<app-admin-monsters *ngIf="showMonsters"></app-admin-monsters>

@@ -15,6 +15,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { GameComponent } from './game/game.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminItemsComponent } from './admin-items/admin-items.component';
+import { AdminMonstersComponent } from './admin-monsters/admin-monsters.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -31,7 +33,9 @@ export const firebaseConfig = {
     GameBoardComponent,
     GameFightComponent,
     GameComponent,
-    AdminComponent
+    AdminComponent,
+    AdminItemsComponent,
+    AdminMonstersComponent
   ],
   imports: [
     BrowserModule,
