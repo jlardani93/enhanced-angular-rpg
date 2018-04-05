@@ -7,7 +7,7 @@ export let gameBoard = {
   width: 10,
   height: 10,
   activeMonsters: 0,
-  generateGameBoard: function(character, roomNumber){
+  generateGameBoard: function(character, roomNumber, randomItem){
     this.board.splice(0, this.board.length);
     this.board2d.splice(0, this.board2d.length);
     for (let i = 0; i < this.height*this.width; i++) {
@@ -30,7 +30,7 @@ export let gameBoard = {
     let myMonsterNumber = (roomNumber >= 6) ? 5 : roomNumber;
     let myItemNumber = Math.floor(Math.random()*2)+1;
     this.addMonster(myMonsterNumber, character.level);
-    this.addItem(myItemNumber);
+    this.addItem(myItemNumber, randomItem);
     this.generateTextures();
   },
 
@@ -47,14 +47,14 @@ export let gameBoard = {
     }
   },
 
-  addItem: function(amount: number){
+  addItem: function(amount: number, randomItem){
     for (let i = 1; i <= amount; i++){
       let randomIndex = Math.floor(Math.random()*this.board.length);
       if (randomIndex <= this.width*2){
         this.addItem(1);
         break;
       }
-      this.board[randomIndex].item = itemsLibrary.healthPotion;
+      this.board[randomIndex].item = randomItem;
     }
   },
 

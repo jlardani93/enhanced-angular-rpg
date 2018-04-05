@@ -1,4 +1,4 @@
-import { Item, itemsLibrary } from './items';
+import { Item } from './items';
 import { Monster } from './monsters';
 import { abilitiesLibrary } from './abilities';
 
@@ -33,6 +33,16 @@ export class Character {
   useItem(myItem: Item, index: number){
     console.log(myItem.useItem(this));
     this.items.splice(index, 1);
+    this.checkIfLevel();
+    if (this.health > this.maxHealth) this.health = this.maxHealth;
+    if (this.mana > this.maxMana) this.mana = this.maxMana; 
+  }
+
+  checkIfLevel(){
+    if (this.experienceToNext <= this.experience) {
+      this.levelUp();
+      this.checkIfLevel();
+    }
   }
 
   levelUp = function(){

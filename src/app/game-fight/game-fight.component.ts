@@ -62,6 +62,8 @@ export class GameFightComponent implements OnInit {
       myStyles['color'] = 'gold';
       myStyles['font-weight'] = 'bold';
     }
+    let element = document.getElementById("battleLog");
+    element.scrollTop = element.scrollHeight;
     return myStyles;
   }
 
@@ -90,7 +92,7 @@ export class GameFightComponent implements OnInit {
       this.addToBL((`${this.currentCharacter.name} vanquished a ${this.currentMonster.name}`), 3);
       this.addToBL((`${this.currentCharacter.name} gained ${this.currentMonster.killExperience} experience`), 5);
       this.currentCharacter.experience += this.currentMonster.killExperience;
-      this.checkIfLevel();
+      this.currentCharacter.checkIfLevel();
       setTimeout(()=>{
         this.doneFighting.emit(true);
         this.attacking = false;
@@ -107,11 +109,4 @@ export class GameFightComponent implements OnInit {
     }
     return true;
   }
-
-  checkIfLevel(){
-    if (this.currentCharacter.experienceToNext <= this.currentCharacter.experience) {
-      this.currentCharacter.levelUp();
-      this.checkIfLevel();
-    }
-  };
 }

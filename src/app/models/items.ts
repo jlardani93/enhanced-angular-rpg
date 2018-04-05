@@ -10,8 +10,3 @@ export class Item {
   useItem;
   key;
 }
-
-export let itemsLibrary = {
-  healthPotion: new Item('Health Potion', 'health', 30, '-1100px -1200px'),
-  manaPotion: new Item('Mana Potion', 'mana', 50, '-1300px -1200px')
-}

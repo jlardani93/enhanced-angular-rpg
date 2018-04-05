@@ -15,7 +15,7 @@
       <progress class="healthBar" value="{{currentMonster.health}}" max="{{currentMonster.maxHealth}}"></progress><br>
     </div>
   </div>
-  <div class="col-md-6" id="battleLog">
+  <div class="col-md-6" id="battleLog" style="width: 100%">
     <p *ngFor="let entry of battleLog" [ngStyle]="renderLogEntry(entry.styleCode)">{{entry.message}}</p>
   </div>
 </div>

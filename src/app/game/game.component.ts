@@ -28,7 +28,7 @@ export class GameComponent {
     if (event.key === "ArrowLeft" && this.currentCharacter.x !== 0 && (resetBool = true)) this.currentCharacter.x-=1;
     if (event.key === "ArrowRight" && this.currentCharacter.x !== gameBoard.width-1 && (resetBool = true)) this.currentCharacter.x+=1;
     if (event.key === "ArrowRight" && this.currentCharacter.x === gameBoard.width-1 && (resetBool = true) && !gameBoard.activeMonsters) {
-      gameBoard.generateGameBoard(this.currentCharacter, this.roomNumber);
+      gameBoard.generateGameBoard(this.currentCharacter, this.roomNumber, this.randomItem());
       this.roomNumber += 1;
       this.currentCharacter.x -= (gameBoard.width-1);
       gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
@@ -42,8 +42,7 @@ export class GameComponent {
       this.isFighting = true;
     }
     if (gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item){
-      this.currentCharacter.items.push(gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item);
-      gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item = null;
+      this.giveItem();
     }
   }
 
@@ -53,11 +52,10 @@ export class GameComponent {
 
   setIsPlaying = function(){
     this.isPlaying = true;
-    gameBoard.generateGameBoard(this.currentCharacter, this.roomNumber);
+    gameBoard.generateGameBoard(this.currentCharacter, this.roomNumber, this.randomItem());
     gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
     this.currentCharacter.items.push(this.itemService.items[0]);
     this.currentCharacter.items.push(this.itemService.items[1]);
-
   }
 
   endFight = function(victory){
@@ -71,5 +69,16 @@ export class GameComponent {
     if (!victory) {
       console.log("you have died");
     }
+  }
+
+  giveItem = function(){
+    this.currentCharacter.items.push(gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item);
+    gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item = null;
+  }
+
+  randomItem = function(){
+    console.log("There are currently this number of items: " + this.itemService.items.length)
+    let randomNumber = Math.floor(Math.random()*this.itemService.items.length);
+    return this.itemService.items[randomNumber];
   }
 }
