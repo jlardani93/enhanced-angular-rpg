@@ -38,5 +38,8 @@
         </div>
       </li>
     </div>
+    <div class="col-md-6" id="gameLog" style="width: 100%">
+      <p *ngFor="let entry of gameLog" [ngStyle]="renderLogEntry(entry.styleCode)">{{entry.message}}</p>
+    </div>
   </div>
 </div>

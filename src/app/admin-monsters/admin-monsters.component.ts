@@ -48,9 +48,10 @@ export class AdminMonstersComponent implements OnInit {
     e.style['margin-left'] = 'auto';
   }
 
-  newMonster(name, maxHealth, maxMana, defense, strength, intelligence, dexterity, luck, attackAttribute, killExperience, imgPath){
+  newMonster(name, monsterLevel, maxHealth, maxMana, defense, strength, intelligence, dexterity, luck, attackAttribute, killExperience, imgPath){
     let myMonsterObject = {
       name: name,
+      level: monsterLevel,
       maxHealth: maxHealth,
       maxMana: maxMana,
       defense: defense,

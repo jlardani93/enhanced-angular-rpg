@@ -57,7 +57,7 @@
           <label>Spritesheet Position</label>
           <input #spritesheetPosition [ngModel]="spritesheetposition" (ngModelChange)="renderPreviewImage(spritesheetPosition.value, itemPreviewImage)" name="spritesheetposition" type="text">
         </div>
-        <button type="button" (click)="newMonster(monsterName.value, maximumHealth.value, maximumMana.value, defense.value, strength.value, intelligence.value, dexterity.value, luck.value, attackAttribute.value, killExperience.value, spritesheetPosition.value)">Create new Item</button>
+        <button type="button" (click)="newMonster(monsterName.value, monsterLevel.value, maximumHealth.value, maximumMana.value, defense.value, strength.value, intelligence.value, dexterity.value, luck.value, attackAttribute.value, killExperience.value, spritesheetPosition.value)">Create new Item</button>
       </div>
     </form>
   </div>

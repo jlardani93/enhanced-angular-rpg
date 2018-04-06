@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { GameLogService } from '../game-log.service'; 
 
 @Component({
   selector: 'app-character-display',
@@ -8,6 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CharacterDisplayComponent {
 
   @Input() childCurrentCharacter;
+
+  gameLog = [];
 
 
   renderItem(imgPath){

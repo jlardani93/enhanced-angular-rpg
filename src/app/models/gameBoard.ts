@@ -1,5 +1,6 @@
-import { Monster, monsterFactory, monsterLevelKey } from './monsters';
+import { Monster, monsterLevelKey } from './monsters';
 import { Item } from './items';
+import { MonsterService } from '../monster.service';
 
 export let gameBoard = {
   board: [],
@@ -7,7 +8,7 @@ export let gameBoard = {
   width: 10,
   height: 10,
   activeMonsters: 0,
-  generateGameBoard: function(character, roomNumber, randomItem){
+  generateGameBoard: function(monsterLevelKey, character, roomNumber, items){
     this.board.splice(0, this.board.length);
     this.board2d.splice(0, this.board2d.length);
     for (let i = 0; i < this.height*this.width; i++) {
@@ -26,35 +27,42 @@ export let gameBoard = {
         index++;
       }
     }
+    console.log(character);
 
     let myMonsterNumber = (roomNumber >= 6) ? 5 : roomNumber;
     let myItemNumber = Math.floor(Math.random()*2)+1;
-    this.addMonster(myMonsterNumber, character.level);
-    this.addItem(myItemNumber, randomItem);
+    this.addMonster(monsterLevelKey, myMonsterNumber, parseInt(character.level));
+    this.addItem(myItemNumber, items);
     this.generateTextures();
   },
 
-  addMonster: function(amount: number, level: number){
+  addMonster: function(monsterLevelKey, amount: number, level: number){
     for (let i = 1; i <= amount; i++){
       let randomIndex = Math.floor(Math.random()*this.board.length);
       if (randomIndex <= this.width*2 || this.board[randomIndex].monster){
-        this.addMonster(1, level);
+        this.addMonster(monsterLevelKey, 1, level);
         break;
       }
-      let randomMonsterLevel = Math.floor(Math.random()*level)+1;
-      this.board[randomIndex].monster = monsterFactory.createMonster(monsterLevelKey[randomMonsterLevel.toString()]);
+      console.log("characterLevel " + level);
+      let randomMonsterLevel = Math.floor(Math.random()*level)+1 ;
+      console.log(randomMonsterLevel);
+      let randomMonsterNumber = Math.floor(Math.random()*monsterLevelKey[randomMonsterLevel].length);
+      let randomMonster = monsterLevelKey[randomMonsterLevel][randomMonsterNumber];
+      console.log(randomMonster);
+      this.board[randomIndex].monster = Object.create(randomMonster);
       this.activeMonsters += 1;
     }
   },
 
-  addItem: function(amount: number, randomItem){
+  addItem: function(amount: number, items){
     for (let i = 1; i <= amount; i++){
       let randomIndex = Math.floor(Math.random()*this.board.length);
       if (randomIndex <= this.width*2){
-        this.addItem(1);
+        this.addItem(1, items);
         break;
       }
-      this.board[randomIndex].item = randomItem;
+      let randomItemNumber = Math.floor(Math.random()*items.length);
+      this.board[randomIndex].item = items[randomItemNumber];
     }
   },
 

@@ -3,16 +3,17 @@ import { Character } from '../models/characters';
 import { gameBoard } from '../models/gameBoard';
 import { Monster } from '../models/monsters';
 import { ItemService } from '../item.service';
+import { MonsterService } from '../monster.service';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
-  providers: [ItemService]
+  providers: [ItemService, MonsterService]
 })
 export class GameComponent {
 
-  constructor(private itemService: ItemService){};
+  constructor(private itemService: ItemService, private monsterService: MonsterService){};
 
   title = 'app works!';
   currentCharacter: Character = null;
@@ -28,7 +29,7 @@ export class GameComponent {
     if (event.key === "ArrowLeft" && this.currentCharacter.x !== 0 && (resetBool = true)) this.currentCharacter.x-=1;
     if (event.key === "ArrowRight" && this.currentCharacter.x !== gameBoard.width-1 && (resetBool = true)) this.currentCharacter.x+=1;
     if (event.key === "ArrowRight" && this.currentCharacter.x === gameBoard.width-1 && (resetBool = true) && !gameBoard.activeMonsters) {
-      gameBoard.generateGameBoard(this.currentCharacter, this.roomNumber, this.randomItem());
+      gameBoard.generateGameBoard(this.monsterService.monsterLevelKey, this.currentCharacter, this.roomNumber, this.itemService.items);
       this.roomNumber += 1;
       this.currentCharacter.x -= (gameBoard.width-1);
       gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
@@ -52,7 +53,7 @@ export class GameComponent {
 
   setIsPlaying = function(){
     this.isPlaying = true;
-    gameBoard.generateGameBoard(this.currentCharacter, this.roomNumber, this.randomItem());
+    gameBoard.generateGameBoard(this.monsterService.monsterLevelKey, this.currentCharacter, this.roomNumber, this.itemService.items);
     gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
     this.currentCharacter.items.push(this.itemService.items[0]);
     this.currentCharacter.items.push(this.itemService.items[1]);
@@ -74,11 +75,5 @@ export class GameComponent {
   giveItem = function(){
     this.currentCharacter.items.push(gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item);
     gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item = null;
-  }
-
-  randomItem = function(){
-    console.log("There are currently this number of items: " + this.itemService.items.length)
-    let randomNumber = Math.floor(Math.random()*this.itemService.items.length);
-    return this.itemService.items[randomNumber];
   }
 }
