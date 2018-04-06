@@ -20,7 +20,6 @@ export class CharacterDisplayComponent {
     myStyles['background-image'] = 'url("../assets/img/spritesheet.png")';
     myStyles['background-size'] = '1600px 1600px';
     myStyles['background-position'] = imgPath;
-    console.log(GameLogService.log);
     return myStyles;
   }
 

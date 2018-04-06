@@ -43,7 +43,6 @@ export class GameBoardComponent {
     if (gameBoard.board[index].player){
       myStyles['background-image'] = 'url(assets/img/spritesheet.png)';
       myStyles['background-position'] = this.currentCharacter.imgPath;
-      console.log(this.currentCharacter.imgPath);
     }
     if (gameBoard.board[index].monster){
       myStyles['background-image'] = 'url(assets/img/spritesheet.png)';

@@ -15,14 +15,12 @@ export class ItemService {
       data.forEach(item => {
         this.items.push(new Item(item.itemName, item.attribute, parseInt(item.magnitude), item.imagePosition));
         this.items[this.items.length-1].key = item.$key;
-        console.log(item.$key);
       })
     })
   }
 
   addItem(newItem) {
     this.itemsData.push(newItem);
-    console.log(this.items);
   }
 
   removeItem(itemKey) {

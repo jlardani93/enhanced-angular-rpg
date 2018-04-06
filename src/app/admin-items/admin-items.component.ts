@@ -55,8 +55,6 @@ export class AdminItemsComponent implements OnInit {
 
   toggleItems(){
     this.showItems = (this.showItems) ? false : true;
-    console.log(this.itemService.itemsData);
-    console.log(this.itemService.items);
   }
 
   newItem(itemName: string, attribute: string, magnitude: string, imagePosition: string){

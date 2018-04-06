@@ -31,7 +31,6 @@ export class Character {
   attack;
 
   useItem(myItem: Item, index: number){
-    console.log(myItem.useItem(this));
     this.items.splice(index, 1);
     if (this.health > this.maxHealth) this.health = this.maxHealth;
     if (this.mana > this.maxMana) this.mana = this.maxMana;
@@ -47,8 +46,6 @@ export class Character {
   }
 
   levelUp = function(){
-    console.log(`${this.name} leveled up!`);
-
     this.health = Math.floor(this.health*1.2);
     this.maxHealth =Math.floor(this.maxHealth*1.2);
     this.mana =Math.floor(this.mana*1.2);

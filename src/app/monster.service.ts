@@ -29,7 +29,6 @@ export class MonsterService {
 
   addMonster(newMonster) {
     this.monstersData.push(newMonster);
-    console.log(this.monsters);
   }
 
   removeMonster(monsterKey) {

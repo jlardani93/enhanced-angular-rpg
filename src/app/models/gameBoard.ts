@@ -27,7 +27,6 @@ export let gameBoard = {
         index++;
       }
     }
-    console.log(character);
 
     let myMonsterNumber = (roomNumber >= 6) ? 5 : roomNumber;
     let myItemNumber = Math.floor(Math.random()*2)+1;
@@ -43,12 +42,9 @@ export let gameBoard = {
         this.addMonster(monsterLevelKey, 1, level);
         break;
       }
-      console.log("characterLevel " + level);
       let randomMonsterLevel = Math.floor(Math.random()*level)+1 ;
-      console.log(randomMonsterLevel);
       let randomMonsterNumber = Math.floor(Math.random()*monsterLevelKey[randomMonsterLevel].length);
       let randomMonster = monsterLevelKey[randomMonsterLevel][randomMonsterNumber];
-      console.log(randomMonster);
       this.board[randomIndex].monster = Object.create(randomMonster);
       this.activeMonsters += 1;
     }
