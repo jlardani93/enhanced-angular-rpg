@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 export class GameLogService {
 
   constructor() { }
-  log: object[] = [];
+  public static log: object[] = [];
 
-  addEntry = function(message: string, styleCode: number){
+  static addEntry = function(message: string, styleCode: number){
     this.log.push({
       message: message,
       styleCode: styleCode

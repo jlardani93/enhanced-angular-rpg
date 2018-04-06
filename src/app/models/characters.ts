@@ -35,13 +35,14 @@ export class Character {
     this.items.splice(index, 1);
     this.checkIfLevel();
     if (this.health > this.maxHealth) this.health = this.maxHealth;
-    if (this.mana > this.maxMana) this.mana = this.maxMana; 
+    if (this.mana > this.maxMana) this.mana = this.maxMana;
   }
 
   checkIfLevel(){
     if (this.experienceToNext <= this.experience) {
       this.levelUp();
       this.checkIfLevel();
+      return (`You leveled Up!`)
     }
   }
 

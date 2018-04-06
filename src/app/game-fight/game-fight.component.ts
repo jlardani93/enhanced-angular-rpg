@@ -1,11 +1,13 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Character } from '../models/characters';
 import { Monster } from '../models/monsters';
+import { GameLogService } from '../game-log.service'
 
 @Component({
   selector: 'app-game-fight',
   templateUrl: './game-fight.component.html',
-  styleUrls: ['./game-fight.component.css']
+  styleUrls: ['./game-fight.component.css'],
+  providers: [ GameLogService ]
 })
 export class GameFightComponent implements OnInit {
   @Input() currentMonster;
@@ -92,7 +94,7 @@ export class GameFightComponent implements OnInit {
       this.addToBL((`${this.currentCharacter.name} vanquished a ${this.currentMonster.name}`), 3);
       this.addToBL((`${this.currentCharacter.name} gained ${this.currentMonster.killExperience} experience`), 5);
       this.currentCharacter.experience += this.currentMonster.killExperience;
-      this.currentCharacter.checkIfLevel();
+      GameLogService.addEntry(this.currentCharacter.checkIfLevel(), 3);
       setTimeout(()=>{
         this.doneFighting.emit(true);
         this.attacking = false;

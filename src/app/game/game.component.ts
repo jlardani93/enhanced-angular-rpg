@@ -4,16 +4,17 @@ import { gameBoard } from '../models/gameBoard';
 import { Monster } from '../models/monsters';
 import { ItemService } from '../item.service';
 import { MonsterService } from '../monster.service';
+import { GameLogService } from '../game-log.service';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
-  providers: [ItemService, MonsterService]
+  providers: [ItemService, MonsterService, GameLogService]
 })
 export class GameComponent {
 
-  constructor(private itemService: ItemService, private monsterService: MonsterService){};
+  constructor(private itemService: ItemService, private monsterService: MonsterService, private gameLogService: GameLogService){};
 
   title = 'app works!';
   currentCharacter: Character = null;
@@ -31,6 +32,7 @@ export class GameComponent {
     if (event.key === "ArrowRight" && this.currentCharacter.x === gameBoard.width-1 && (resetBool = true) && !gameBoard.activeMonsters) {
       gameBoard.generateGameBoard(this.monsterService.monsterLevelKey, this.currentCharacter, this.roomNumber, this.itemService.items);
       this.roomNumber += 1;
+      GameLogService.addEntry(`Entering room ${this.roomNumber}...`, 1);
       this.currentCharacter.x -= (gameBoard.width-1);
       gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
     }
@@ -54,6 +56,7 @@ export class GameComponent {
   setIsPlaying = function(){
     this.isPlaying = true;
     gameBoard.generateGameBoard(this.monsterService.monsterLevelKey, this.currentCharacter, this.roomNumber, this.itemService.items);
+    GameLogService.addEntry(`Entering room ${this.roomNumber}...`, 1);
     gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].player = true;
     this.currentCharacter.items.push(this.itemService.items[0]);
     this.currentCharacter.items.push(this.itemService.items[1]);
@@ -62,18 +65,19 @@ export class GameComponent {
   endFight = function(victory){
     this.isFighting = false;
     if (victory) {
+      GameLogService.addEntry(`You have vanquished a ${this.currentMonster.name}`, 1);
       this.currentMonster = null;
       gameBoard.activeMonsters -= 1;
-      console.log(gameBoard.activeMonsters);
       gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].monster = null;
     }
     if (!victory) {
-      console.log("you have died");
+      GameLogService.addEntry("you have died", 5);
     }
   }
 
   giveItem = function(){
     this.currentCharacter.items.push(gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item);
+    GameLogService.addEntry(`You have added a(n) ${this.currentCharacter.items[this.currentCharacter.items.length-1].name} to your inventory.`, 2);
     gameBoard.board2d[this.currentCharacter.y][this.currentCharacter.x].item = null;
   }
 }
