@@ -33,7 +33,7 @@
   <div class="col-md-6">
     <div class="row" id="itemContainer">
       <li class="col-md-3" *ngFor="let currentItem of childCurrentCharacter.items; let i = index" style="border: 0px">
-        <div class="item" (click)="childCurrentCharacter.useItem(currentItem, i)" [ngStyle]="renderItem(currentItem.imgPath)">
+        <div class="item" (click)="gameLogService.addEntry(childCurrentCharacter.useItem(currentItem, i), 3)" [ngStyle]="renderItem(currentItem.imgPath)">
           <span>{{currentItem.name}}</span>
         </div>
       </li>

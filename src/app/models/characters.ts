@@ -33,9 +33,9 @@ export class Character {
   useItem(myItem: Item, index: number){
     console.log(myItem.useItem(this));
     this.items.splice(index, 1);
-    this.checkIfLevel();
     if (this.health > this.maxHealth) this.health = this.maxHealth;
     if (this.mana > this.maxMana) this.mana = this.maxMana;
+    return(this.checkIfLevel());
   }
 
   checkIfLevel(){
