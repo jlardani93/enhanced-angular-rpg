@@ -1,0 +1,86 @@
+{
+  "items" : {
+    "-L9HcDjB8o_6gso0U_MY" : {
+      "attribute" : "health",
+      "imagePosition" : "-1200px -1100px",
+      "itemName" : "Health Potion",
+      "magnitude" : "20"
+    },
+    "-L9HdVFtdv6L5zOPeEfB" : {
+      "attribute" : "mana",
+      "imagePosition" : "-1200px -1300px ",
+      "itemName" : "Mana Potion",
+      "magnitude" : "50"
+    },
+    "-L9He0yvzUcH84tpUAy-" : {
+      "attribute" : "experience",
+      "imagePosition" : "-1100px -1300px ",
+      "itemName" : "Experience Potion",
+      "magnitude" : "100"
+    },
+    "-L9Mo6OBkB42bKT8whec" : {
+      "attribute" : "strength",
+      "imagePosition" : "-1204px -1100px",
+      "itemName" : "Big Ty's Energy Drank",
+      "magnitude" : "100"
+    }
+  },
+  "monsters" : {
+    "-L9Mzo83tubI8E8VpHv9" : {
+      "attackAttribute" : "strength",
+      "defense" : "4",
+      "dexterity" : "6",
+      "imgPath" : "-400px -900px",
+      "intelligence" : "10",
+      "killExperience" : "20",
+      "level" : "1",
+      "luck" : "5",
+      "maxHealth" : "25",
+      "maxMana" : "50",
+      "name" : "Bat",
+      "strength" : "3"
+    },
+    "-L9MzvuZ-fqD9DMopVrr" : {
+      "attackAttribute" : "strength",
+      "defense" : "8",
+      "dexterity" : "6",
+      "imgPath" : "-400px -1000px",
+      "intelligence" : "2",
+      "killExperience" : "40",
+      "level" : "2",
+      "luck" : "5",
+      "maxHealth" : "50",
+      "maxMana" : "50",
+      "name" : "Zombie",
+      "strength" : "5"
+    },
+    "-L9N-5sJNrBc0gCl_9fU" : {
+      "attackAttribute" : "strength",
+      "defense" : "4",
+      "dexterity" : "10",
+      "imgPath" : "-100px -900px",
+      "intelligence" : "6",
+      "killExperience" : "75",
+      "level" : "3",
+      "luck" : "5",
+      "maxHealth" : "100",
+      "maxMana" : "50",
+      "name" : "Skeleton",
+      "strength" : "10"
+    },
+    "-L9RBmym6JGObHfVxJP9" : {
+      "attackAttribute" : "strength",
+      "defense" : "4",
+      "dexterity" : "10",
+      "imgPath" : "-500px -900px",
+      "intelligence" : "16",
+      "killExperience" : "100",
+      "level" : "4",
+      "luck" : "5",
+      "maxHealth" : "150",
+      "maxMana" : "50",
+      "name" : "Ghoul",
+      "strength" : "6"
+    }
+  }
+}

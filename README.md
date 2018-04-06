@@ -1,28 +1,59 @@
-# EnhancedAngularRpg
+## Enhanced-Angular-Rpg
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+#### Mvc C# exercise, 02/09/2018
 
-## Development server
+#### By **Justin Lardani**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Description
 
-## Code scaffolding
+Enhanced-Angular-Rpg is an application created to explore the use of the Angular framework and working with Firebase. Users can create a character and fight monsters to proceed through various levels of a dynamically-created dungeon. An administrative panel is also available for creating additional items and monsters to be added to the game.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+### Link to Firebase Deployment of application
 
-## Build
+* https://enhanced-angular-rpg.firebaseapp.com/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Setup/Installation Requirements
 
-## Running unit tests
+* Clone this repository to your desktop.
+* Navigate to the root of the cloned directory in a terminal capable of running npm commands.
+* Run the command $ npm install.
+* Create a database for this project on your Google Firebase account
+* Copy the database.json file from the project directory to your database
+* Create a file at the following path: /enhanced-angular-rpg/src/app/api-keys.ts
+* In this file, input the following code:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    export var masterFirebaseConfig = {
+      apiKey: [your api key],
+        authDomain: [your authDomain],
+        databaseURL: [your databaseURL],
+        projectId: [your projectId],
+        storageBucket: [your storageBucket],
+        messagingSenderId: [your messagingSenderId]
+    }
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+* Navigate to localhost:4200 in your browser.
 
-## Further help
+## Known Bugs
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+No known bugs at this time.
+
+## Support and contact details
+
+If you have suggestions for how to help us make any additions, or if you have other feedback, please feel free to contact Justin at jlardani93@gmail.com. All feedback is welcome.
+
+## Technologies Used
+
+* Angular
+* Node Package Manager
+* Firebase
+* HTML
+* Bootstrap
+* CSS
+
+
+### License
+
+*This software is licensed under the MIT license.*
+
+Copyright (c) 2018 **Justin Lardani**
